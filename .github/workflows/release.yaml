@@ -42,7 +42,7 @@ jobs:
       - name: Build kubeedge/node image
         run: |
           export GOPATH=$(go env GOPATH)
-          /usr/local/bin/keink build edge-image --image=kubeedge/node:${{ github.ref_name }} --kube-root=$GOPATH/github.com/kubeedge/kubeedge
+          /usr/local/bin/keink build edge-image --image=eliaswang6080/keink:${{ github.ref_name }} --kube-root=$GOPATH/github.com/kubeedge/kubeedge
 
       - name: Uploading release assets...
         uses: softprops/action-gh-release@v1
