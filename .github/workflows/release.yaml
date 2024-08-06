@@ -10,6 +10,21 @@ jobs:
     name: publish keink binary to github and kubeedge/node image to dockerhub
     runs-on: ubuntu-20.04
     timeout-minutes: 30
+#    strategy:
+#      matrix:
+#        target: [ keink ]
+#        os: [ linux ]
+#        ARM_VERSION: [ GOARM7, GOARM8, "" ]
+#        include:
+#          - target: keink
+#            os: windows
+#            ARM_VERSION: ""
+#    outputs:
+#      hash-keink-linux-amd64: ${{ steps.hash.outputs.hash-keink-linux-amd64 }}
+#      hash-keink-linux-arm64: ${{ steps.hash.outputs.hash-keink-linux-arm64 }}
+#      hash-keink-linux-arm: ${{ steps.hash.outputs.hash-keink-linux-arm }}
+#      hash-keink-windows-amd64: ${{ steps.hash.outputs.hash-keink-windows-amd64 }}
+
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
@@ -43,4 +58,4 @@ jobs:
         
       - name: publish images
         run: |
-          docker push kubeedge/node:${{ github.ref_name }}
+          docker push eliaswang6080/keink:${{ github.ref_name }}
